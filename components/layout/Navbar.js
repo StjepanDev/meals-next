@@ -1,20 +1,27 @@
 import React from 'react';
 import Link from 'next/link';
 import logo from '../../public/logo.png';
+import Image from 'next/image';
 
 const Navbar = () => {
   return (
     <nav className="navbar">
       <div className="nav-center">
         <Link href="/">
-          <img src={logo} alt="meal logo" className="logo" />
+          <Image
+            src={logo}
+            alt="meal logo"
+            className="logo"
+            width="350"
+            height="50"
+          />
         </Link>
         <ul className="nav-links">
           <li>
-            <Link href="/">HOME</Link>
+            <Link href="/">Home</Link>
           </li>
           <li>
-            <Link href="/about">ABOUT</Link>
+            <Link href="/about">About</Link>
           </li>
         </ul>
       </div>

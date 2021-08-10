@@ -2,12 +2,12 @@ import Meal from './Meal';
 
 const MealList = ({ meals }) => {
   if (meals.length < 1) {
-    return <h2 className="section-title">NO MEALS FOUND</h2>;
+    return <h2 className="section-title">No meals found</h2>;
   }
   return (
     <section className="section">
-      <h2 className="section-title">MEALS</h2>
-      <div className="cocktails-center">
+      <h2 className="section-title">Meals</h2>
+      <div className="meals-center">
         {meals.map((meal) => {
           return <Meal key={meal.id} meal={meal} />;
         })}

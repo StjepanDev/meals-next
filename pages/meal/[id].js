@@ -1,18 +1,53 @@
 import path from 'path';
 import fs from 'fs/promises';
-import Meal from '../../components/Meal';
 import Loading from './../../components/Loading';
+import Link from 'next/link';
 
 function DetailPage(props) {
   const { meal } = props;
-
+  const { ingredients, instructions, name, image, info, country, category } =
+    meal;
   if (!meal) {
     return <Loading />;
   }
   return (
-    <>
-      <Meal meal={meal} />
-    </>
+    <section className="section meal-section">
+      <Link href="/" className="btn btn-primary">
+        Back
+      </Link>
+      <h2 className="section-title">{name}</h2>
+      <div className="food">
+        <img src={image} alt={name} />
+        <div className="food-info">
+          <p>
+            <span className="food-data">name:</span>
+            {name}
+          </p>
+          <p>
+            <span className="food-data">category:</span>
+            {category}
+          </p>
+          <p>
+            <span className="food-data">info:</span>
+            {info}
+          </p>
+          <p>
+            <span className="food-data">glass:</span>
+            {country}
+          </p>
+          <p>
+            <span className="food-data">ingridients:</span>
+            {ingredients.map((item, idx) => {
+              return item ? <span key={idx}>{item} </span> : null;
+            })}
+          </p>
+          <p>
+            <span className="food-data">instructions:</span>
+            {instructions}
+          </p>
+        </div>
+      </div>
+    </section>
   );
 }
 
@@ -32,7 +67,30 @@ export async function getStaticProps(context) {
   const data = await getData();
 
   const meal = data.meals.find((meal) => meal.idMeal === mealId);
-
+  const {
+    strIngredient1,
+    strIngredient2,
+    strIngredient3,
+    strIngredient4,
+    strIngredient5,
+    strIngredient6,
+    strIngredient7,
+    strIngredient8,
+    strIngredient9,
+    strIngredient10,
+  } = meal;
+  const ingredients = [
+    strIngredient1,
+    strIngredient2,
+    strIngredient3,
+    strIngredient4,
+    strIngredient5,
+    strIngredient6,
+    strIngredient7,
+    strIngredient8,
+    strIngredient9,
+    strIngredient10,
+  ];
   if (!meal) {
     return { notFound: true };
   }
@@ -45,6 +103,9 @@ export async function getStaticProps(context) {
         image: meal.strMealThumb,
         info: meal.strCategory,
         country: meal.strArea,
+        instructions: meal.strInstructions,
+        category: meal.strCategory,
+        ingredients,
       },
     },
   };
