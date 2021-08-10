@@ -1,6 +1,5 @@
 import React from 'react';
 import Link from 'next/link';
-import logo from '../../public/logo.png';
 import Image from 'next/image';
 
 const Navbar = () => {
@@ -9,7 +8,7 @@ const Navbar = () => {
       <div className="nav-center">
         <Link href="/">
           <Image
-            src={logo}
+            src="/logo.png"
             alt="meal logo"
             className="logo"
             width="350"

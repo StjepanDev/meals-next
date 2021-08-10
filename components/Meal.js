@@ -1,13 +1,12 @@
 import Link from 'next/link';
-import styles from '../styles/Home.module.css';
-
+import Image from 'next/image';
 const Meal = ({ meal }) => {
   const { id, name, image, info, country } = meal;
 
   return (
     <article className="meal">
       <div className="img-container">
-        <img src={image} alt={name} />
+        <Image src={image} alt={name} width="350" height="50" />
       </div>
       <div className="meal-footer">
         <h3>{name}</h3>

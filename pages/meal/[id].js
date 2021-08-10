@@ -1,6 +1,7 @@
 import path from 'path';
 import fs from 'fs/promises';
 import Loading from './../../components/Loading';
+import Image from 'next/image';
 import Link from 'next/link';
 
 function DetailPage(props) {
@@ -17,7 +18,7 @@ function DetailPage(props) {
       </Link>
       <h2 className="section-title">{name}</h2>
       <div className="food">
-        <img src={image} alt={name} />
+        <Image src={image} alt={name} width="750" height="900" />
         <div className="food-info">
           <p>
             <span className="food-data">name:</span>
