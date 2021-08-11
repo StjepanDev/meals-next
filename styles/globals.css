@@ -257,7 +257,7 @@ Meal List
   column-gap: 2rem;
   /* align-items: start; */
 }
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 360px) {
   .meals-center {
     grid-template-columns: repeat(auto-fill, minmax(338.8px, 1fr));
   }
