@@ -5,7 +5,7 @@ import Head from 'next/head';
 
 function HomePage(props) {
   const { meals } = props;
-  // console.log(meals);
+  meals.sort(() => Math.random() - 0.5);
   return (
     <>
       <Head>
