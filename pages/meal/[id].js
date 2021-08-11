@@ -4,6 +4,7 @@ import Loading from './../../components/Loading';
 import Image from 'next/image';
 import Link from 'next/link';
 import Head from 'next/head';
+import styles from '../../styles/404.module.css';
 
 function DetailPage(props) {
   const { meal } = props;
@@ -24,9 +25,11 @@ function DetailPage(props) {
       </Head>
 
       <section className="section meal-section">
-        <Link href="/" className="btn btn-primary">
-          Back
-        </Link>
+        <div className={styles.btn}>
+          <Link href="/" className="btn btn-primary">
+            Back
+          </Link>
+        </div>
         <h2 className="section-title">{name}</h2>
         <div className="food">
           <Image src={image} alt={name} width="750" height="900" />
