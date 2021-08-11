@@ -24,7 +24,7 @@ Variables
 ======
 */
   :root {
-    --primaryLightColor: #d4e6a5;
+    --primaryLightColor: #ddd4ff;
     --primaryColor: #593eb9;
     --primaryDarkColor: #c02c03;
     --mainWhite: #fff;
@@ -87,6 +87,17 @@ Global Styles
   img {
     width: 100%;
     display: block;
+  }
+
+  .not-found {
+    text-align: center;
+    color: var(--primaryColor);
+  }
+  .not-found a {
+    text-decoration: underline;
+    color: var(--primaryColor);
+    font-weight: 600;
+    font-size: 2rem;
   }
 
   /* 

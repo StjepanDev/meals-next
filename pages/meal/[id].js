@@ -3,6 +3,7 @@ import fs from 'fs/promises';
 import Loading from './../../components/Loading';
 import Image from 'next/image';
 import Link from 'next/link';
+import Head from 'next/head';
 
 function DetailPage(props) {
   const { meal } = props;
@@ -12,43 +13,54 @@ function DetailPage(props) {
     return <Loading />;
   }
   return (
-    <section className="section meal-section">
-      <Link href="/" className="btn btn-primary">
-        Back
-      </Link>
-      <h2 className="section-title">{name}</h2>
-      <div className="food">
-        <Image src={image} alt={name} width="750" height="900" />
-        <div className="food-info">
-          <p>
-            <span className="food-data">name:</span>
-            {name}
-          </p>
-          <p>
-            <span className="food-data">category:</span>
-            {category}
-          </p>
-          <p>
-            <span className="food-data">info:</span>
-            {info}
-          </p>
-          <p>
-            <span className="food-data">glass:</span>
-            {country}
-          </p>
-          <p>
-            <span className="food-data">ingridients:</span>
-            {ingredients.map((item, idx) => {
-              return item ? <span key={idx}>{item} </span> : null;
-            })}
-          </p>
-          <p>
-            <span className="food-data">instructions:</span>
-            {instructions}
-          </p>
+    <>
+      <Head>
+        <title>{name}</title>
+        <meta name="keywords" content={ingredients} />
+        <meta
+          name="description"
+          content="Find a lot of great recipes for preparing meals"
+        />
+      </Head>
+
+      <section className="section meal-section">
+        <Link href="/" className="btn btn-primary">
+          Back
+        </Link>
+        <h2 className="section-title">{name}</h2>
+        <div className="food">
+          <Image src={image} alt={name} width="750" height="900" />
+          <div className="food-info">
+            <p>
+              <span className="food-data">name:</span>
+              {name}
+            </p>
+            <p>
+              <span className="food-data">category:</span>
+              {category}
+            </p>
+            <p>
+              <span className="food-data">info:</span>
+              {info}
+            </p>
+            <p>
+              <span className="food-data">country:</span>
+              {country}
+            </p>
+            <p>
+              <span className="food-data">ingridients:</span>
+              {ingredients.map((item, idx) => {
+                return item ? <span key={idx}>{item} </span> : null;
+              })}
+            </p>
+            <p>
+              <span className="food-data">instructions:</span>
+              {instructions}
+            </p>
+          </div>
         </div>
-      </div>
-    </section>
+      </section>
+    </>
   );
 }
 
@@ -120,7 +132,7 @@ export async function getStaticPaths() {
 
   return {
     paths,
-    fallback: true,
+    fallback: false,
   };
 }
 

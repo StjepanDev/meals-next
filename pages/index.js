@@ -1,11 +1,27 @@
 import path from 'path';
 import fs from 'fs/promises';
 import MealList from '../components/MealList';
+import Head from 'next/head';
 
 function HomePage(props) {
   const { meals } = props;
   // console.log(meals);
-  return <MealList meals={meals} />;
+  return (
+    <>
+      <Head>
+        <title>Home | Meal List</title>
+        <meta
+          name="keywords"
+          content="preparing meals recipes food dinner lunch"
+        />
+        <meta
+          name="description"
+          content="Find a lot of great recipes for preparing meals"
+        />
+      </Head>
+      <MealList meals={meals} />
+    </>
+  );
 }
 
 export async function getStaticProps(context) {
